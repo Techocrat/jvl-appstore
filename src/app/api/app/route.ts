@@ -21,7 +21,7 @@ export async function POST (request: Request) {
     const { appname, appurl, organization, description } = appSchema.parse(body)
     
     // check if the user role is developer
-    if (session?.user.role !== 'user') {
+    if (session?.user.role !== 'developer') {
       return new NextResponse('Unauthorized', { status: 401 })
     }
     await db.insert(schema.apps).values({

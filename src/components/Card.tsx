@@ -45,7 +45,7 @@ const Card = ({
           {description}
         </p>
       </div>
-    <div className='flex justify-center items-center gap-6 py-6'>
+    <div className='flex justify-center items-center flex-grow gap-6 py-6'>
         <Button onClick={() => handleVisitWebsite(id)}>
           Download
         </Button>

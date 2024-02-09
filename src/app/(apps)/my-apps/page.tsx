@@ -1,6 +1,5 @@
 import Card from '@/components/Card'
-import RedirectToLogin from '@/components/RedirectToLogin'
-import Navbar from '@/components/navbar'
+import Navbar from '@/components/Navbar'
 import { getUsersApp } from '@/database'
 import { getSession } from '@/lib/auth'
 
@@ -12,8 +11,9 @@ const page = async () => {
   return (
     <>
       <Navbar />
-      {session?.user ? (
+      {session?.user && session?.user?.role === 'developer' ? (
         <div className='w-screen h-screen flex justify-center items-center bg-emerald-100'>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {usersApp?.map(app => {
             return (
               <Card
@@ -26,8 +26,11 @@ const page = async () => {
             )
           })}
         </div>
+        </div>
       ) : (
-        <RedirectToLogin />
+        <div className='w-screen h-screen flex justify-center items-center bg-emerald-100'>
+            <span className='text-4xl font-bold'> You are not authorized to view this page !!  </span>
+            </div>
       )}
     </>
   )
