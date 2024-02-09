@@ -53,43 +53,5 @@ export async function POST (request: Request) {
   }
 }
 
-// export async function signIn(request: Request) {
-//     try {
-//       const body = await request.json();
-//       const { email, password } = body;
-  
-//       // Check if the user exists
-//       const user = await db
-//         .select()
-//         .from(schema.users)
-//         .where(sql`email = ${email}`)
-  
-//       if (!user) {
-//         return new NextResponse('User not found', { status: 404 });
-//       }
-  
-//       // Verify password
-//       const hashedPassword = await hash(password, 10);
-//       const passwordMatch = await compare(password, hashedPassword);
-//       if (!passwordMatch) {
-//         return new NextResponse('Invalid password', { status: 401 });
-//       }
-  
-//       // Successful login
-//       return new NextResponse('Login successful', { status: 200 });
-//     } catch (error: any) {
-//       console.log('Login Error', error);
-//       return new NextResponse('Internal Error', { status: 500 });
-//     }
-//   }
-  
 
-export async function GET (request: Request) {
-  try {
-    const user = await db.select().from(schema.users)
-    return NextResponse.json(user)
-  } catch (error: any) {
-    console.log('Registration Error', error)
-    return new NextResponse('Internal Error', { status: 500 })
-  }
-}
+

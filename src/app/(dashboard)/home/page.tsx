@@ -1,9 +1,11 @@
 import Navbar from "@/components/navbar"
-import { authOptions } from "@/lib/auth"
-import { getServerSession } from "next-auth"
+import { getUsers } from "@/database"
+import { getSession } from "@/lib/auth"
 
 const page = async () => {
-  const session = await getServerSession(authOptions)
+  const session = await getSession()
+  const user = await getUsers()
+  console.log('user', user)
   return (
     <>
     <Navbar />

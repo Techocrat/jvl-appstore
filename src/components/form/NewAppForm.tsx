@@ -38,23 +38,24 @@ const NewAppForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
-    //  const response = await fetch('/api/user', {
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //       username: values.username,
-    //       email: values.email,
-    //       password: values.password,
-    //     }),
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   });
+    const response = await fetch('/api/app', {
+      method: 'POST',
+      body: JSON.stringify({
+        appname: values.appname,
+        appurl: values.appurl,
+        organization: values.organization,
+        description: values.description,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-    //   if (response.ok) {
-    //     router.push('/sign-in');
-    //   } else {
-    //     console.error('Failed to sign up');
-    //   }
+    if (response.ok) {
+      router.push('/all-apps');
+    } else {
+      console.error('Failed to create app');
+    }
   };
 
   return (

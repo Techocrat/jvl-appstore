@@ -25,7 +25,7 @@ export default function Home () {
             height='16'
             width='16'
             className='mx-auto w-48 h-48'
-            src='/logo.svg'
+            src='/logo_w.svg'
             alt='Logo'
           />
           <h2

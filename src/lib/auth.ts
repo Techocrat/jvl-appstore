@@ -1,5 +1,5 @@
 import db from '@/db'
-import { NextAuthOptions } from 'next-auth'
+import { NextAuthOptions, getServerSession } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import * as schema from '@/db/schema'
 import { sql } from 'drizzle-orm'
@@ -78,3 +78,7 @@ export const authOptions: NextAuthOptions = {
     }
   }
 }
+
+
+export const getSession = async () =>  await getServerSession(authOptions)
+ 
